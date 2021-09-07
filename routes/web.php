@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::resource('contact',ContactController::class);
+Route::get('asd',[ContactController::class,'index'])->name('piyash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+
+    $users = User::all();
+    return view('dashboard',compact('users'));
+})->name('dashboard');
