@@ -10,13 +10,8 @@
     </x-slot>
 
     <div class="py-12">
-
-
-
         <div class="container">
             <div class="row">
-
-
                 <table class="table">
                     <thead>
                     <tr>
@@ -33,18 +28,13 @@
                         <th scope="row">{{ $i++ }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at->diffforhumans() }}</td>
+                        <td>{{ Carbon\Carbon::parse($user->created_at)->diffforhumans() }}</td>
                     </tr>
                     @endforeach
 
                     </tbody>
                 </table>
-
-
             </div>
         </div>
-
-
-
     </div>
 </x-app-layout>

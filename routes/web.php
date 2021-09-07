@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 /*
@@ -25,7 +26,11 @@ Route::resource('contact',ContactController::class);
 Route::get('asd',[ContactController::class,'index'])->name('piyash');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+   /* ORM Eloquent data read */
+//  $users = User::all();
 
-    $users = User::all();
+//    /* Query builder data read */
+    $users = DB::table('users')->get();
+
     return view('dashboard',compact('users'));
 })->name('dashboard');
