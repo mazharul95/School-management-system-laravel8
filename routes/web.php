@@ -23,6 +23,7 @@ Route::get('/about', function () {
 Route::resource('contact',ContactController::class);
 Route::get('asd',[ContactController::class,'index'])->name('piyash');
 Route::get('/category/all',[CategoryController::class,'AllCat'])->name('all.category');
+Route::post('/category/add',[CategoryController::class,'AddCat'])->name('store.category');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     /* ORM Eloquent data read */
