@@ -12,12 +12,14 @@ use Illuminate\support\Facades\DB;
 class CategoryController extends Controller
 {
     public function AllCat(){
-        $categories = Category::latest()->paginate(5);
-<<<<<<< HEAD
-=======
+        $categories = DB::table('categories')
+                    ->join('users','categories.user_id','users.id')
+                    ->select('categories.*','users.name')
+                    ->latest()->paginate(5);
+
+       // $categories = Category::latest()->paginate(5);
 
         //$categories = DB::table('categories')->latest()->get();
->>>>>>> d4bab5363b321d1f27eb37586170a4a1ef8ff607
         return view('admin.category.index', compact('categories'));
     }
 
