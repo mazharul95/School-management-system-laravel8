@@ -20,10 +20,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @php($i = 1)
-                    @foreach($users as $user)
+                    @foreach($users as $index=>$user)
                     <tr>
-                        <th scope="row">{{ $i++ }}</th>
+                        <th scope="row">{{ $index+1 }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->diffforhumans() }}</td>
