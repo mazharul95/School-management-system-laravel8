@@ -38,7 +38,9 @@
                                     @if($category->created_at == NULL )
                                         <span class="text-danger">No Date Set</span>
                                     @else
-                                    {{ $category->created_at->diffforHumans() }} </td>
+
+                                       {{ $category->created_at->diffforHumans() }}
+                                </td>
                                     @endif
                             </tr>
                                 @endforeach
