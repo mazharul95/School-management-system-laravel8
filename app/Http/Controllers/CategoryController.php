@@ -11,19 +11,19 @@ use Illuminate\support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    public function AllCat(){
-        $categories = DB::table('categories')
+    public function allCat(){
+       /* $categories = DB::table('categories')
                     ->join('users','categories.user_id','users.id')
                     ->select('categories.*','users.name')
-                    ->latest()->paginate(5);
+                    ->latest()->paginate(5);*/
 
-       // $categories = Category::latest()->paginate(5);
+        $categories = Category::latest()->paginate(5);
 
         //$categories = DB::table('categories')->latest()->get();
         return view('admin.category.index', compact('categories'));
     }
 
-    public function AddCat(Request $request){
+    public function addCat(Request $request){
 
         $validated = $request->validate([
             'category_name' => 'required|unique:categories|max:255',
@@ -45,4 +45,17 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success','Category inserted Successful');
     }
+
+    public function editCategory($id){
+        $category = Category::find($id);
+        return view('admin.category.edit',compact('category'));
+    }
+
+    public function updateCategory($id,Request $request){
+        $category = Category::findOrFail($id);
+        $category->category_name = $request->category_name;
+        $category->update();
+        return redirect()->route('all.category')->with('success','Category updated Successful');
+    }
+
 }
