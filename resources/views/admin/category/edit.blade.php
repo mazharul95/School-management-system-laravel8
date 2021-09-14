@@ -13,8 +13,8 @@
                         <div class="card-header">Edit Category</div>
                         <div class="card-body">
                             <form action="{{ route('category.update',$category->id) }}" method="POST">
-                                @method('PUT')
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label class="form-label">Update Category Name</label>
                                     <input type="text" name="category_name" class="form-control" aria-describedby="emailHelp"
