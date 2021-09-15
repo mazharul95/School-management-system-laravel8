@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Brand;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +26,6 @@ Route::resource('contact',ContactController::class);
 Route::get('asd',[ContactController::class,'index'])->name('piyash');
 Route::get('/category/all',[CategoryController::class,'allCat'])->name('all.category');
 Route::post('/category/add',[CategoryController::class,'addCat'])->name('store.category');
-
 Route::get('/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
 Route::put('/category/update/{id}',[CategoryController::class,'updateCategory'])->name('category.update');
 Route::get('/softdelete/category/{id}',[CategoryController::class,'softDelete']);
@@ -35,6 +35,10 @@ Route::get('/delete/category/{id}',[CategoryController::class,'delete']);
 
 ///for Brand Route
 Route::get('/brand/all', [BrandController::class,'allBrand'])->name('all.brand');
+Route::post('/brand/add',[BrandController::class,'storeBrand'])->name('store.brand');
+Route::get('/brand/edit/{id}',[BrandController::class,'editBrand'])->name('brand.edit');
+Route::put('/brand/update/{id}',[BrandController::class,'updateBrand'])->name('brand.update');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\support\Facades\DB;
@@ -26,7 +27,8 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('categories','trachCats'));
     }
 
-    public function addCat(Request $request){
+    public function addCat(Request $request): RedirectResponse
+    {
 
         $validated = $request->validate([
             'category_name' => 'required|unique:categories|max:255',
@@ -73,11 +75,13 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect()->back()->with('success','Category soft delete Successful');
     }
-    public function restoreData($id){
+    public function restoreData($id): RedirectResponse
+    {
         Category::withTrashed()->find($id)->restore();
         return redirect()->back()->with('success','Category restore Successful');
     }
-    public function delete($id){
+    public function delete($id): RedirectResponse
+    {
         Category::onlyTrashed()->find($id)->forceDelete();
         return redirect()->back()->with('success','Category permanently delete Successful');
     }

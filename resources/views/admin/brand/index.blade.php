@@ -30,54 +30,59 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $index=>$category)
+                            @foreach($brands as $index=>$brand)
                                 <tr>
-                                    <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
-                                    <td> {{ $category->category_name }} </td>
-                                    <td> {{ $category->user->name }} </td>
+                                    <th scope="row">{{ $brands->firstItem()+$loop->index }}</th>
+                                    <td> {{ $brand->brand_name }} </td>
+                                    <td> <img src="{{ asset($brand->brand_image) }}" style="height:50px; width:70px"> </td>
                                     <td>
-                                        @if($category->created_at == NULL )
+                                        @if($brand->created_at == NULL )
                                             <span class="text-danger">No Date Set</span>
                                         @else
-                                            {{ Carbon\Carbon::parse($category->created_at)->diffforHumans() }}
+                                            {{ Carbon\Carbon::parse($brand->created_at)->diffforHumans() }}
                                     </td>
                                     @endif
                                     <td>
-                                        <a href="{{ url('category/edit/'.$category->id) }}"
+                                        <a href="{{ url('brand/edit/'.$brand->id) }}"
                                            class="btn btn-info">Edit</a>
-                                        <a href="{{ url('softdelete/category/'.$category->id) }}"
+                                        <a href="{{ url('softdelete/brand/'.$brand->id) }}"
                                            class="btn btn-danger">Soft Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $categories->links() }}
+                        {{ $brands->links() }}
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-header">Add Category</div>
+                        <div class="card-header">Add Brand</div>
                         <div class="card-body">
-                            <form action="{{ route('store.category') }}" method="POST">
+                            <form action="{{ route('store.brand') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" class="form-label">Category Name</label>
-                                    <input type="text" name="category_name" class="form-control" id="exampleInputEmail1"
+                                    <label for="exampleInputEmail1" class="form-label">Brand Name</label>
+                                    <input type="text" name="brand_name" class="form-control" id="exampleInputEmail1"
                                            aria-describedby="emailHelp">
-                                    @error('category_name')
+                                    @error('brand_name')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Brand Image</label>
+                                    <input type="file" name="brand_image" class="form-control" id="exampleInputEmail1"
+                                           aria-describedby="emailHelp">
+                                    @error('brand_image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Brand</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </x-app-layout>
