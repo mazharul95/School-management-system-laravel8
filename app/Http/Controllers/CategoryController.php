@@ -17,15 +17,13 @@ class CategoryController extends Controller
                     ->select('categories.*','users.name')
                     ->latest()->paginate(5);*/
 
-<<<<<<< HEAD
         //$categories = DB::table('categories')->latest()->paginate(5);
-        return view('admin.category.index', compact('categories'));
-=======
+       // return view('admin.category.index', compact('categories'));
+
         $categories = Category::latest()->paginate(5);
         $trachCats = Category::onlyTrashed()->latest()->paginate(5);
         //$categories = DB::table('categories')->latest()->get();
         return view('admin.category.index', compact('categories','trachCats'));
->>>>>>> 29e9dff5aa34ca915ce8ec0d39b36707141e9f5c
     }
 
     public function addCat(Request $request){

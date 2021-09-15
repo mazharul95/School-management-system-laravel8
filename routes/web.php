@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -30,6 +31,11 @@ Route::put('/category/update/{id}',[CategoryController::class,'updateCategory'])
 Route::get('/softdelete/category/{id}',[CategoryController::class,'softDelete']);
 Route::get('/category/restore/{id}',[CategoryController::class,'restoreData']);
 Route::get('/delete/category/{id}',[CategoryController::class,'delete']);
+
+
+///for Brand Route
+Route::get('/brand/all', [BrandController::class,'allBrand'])->name('all.brand');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     /* ORM Eloquent data read */
