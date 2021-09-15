@@ -13,7 +13,7 @@
             </button>
         </div>
     @endif
-    
+
     <div class="py-12">
         <div class="container">
             <div class="row">
