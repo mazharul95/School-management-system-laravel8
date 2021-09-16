@@ -8,6 +8,7 @@ use App\Models\Brand;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class BrandController extends Controller
 {
@@ -17,7 +18,6 @@ class BrandController extends Controller
         return view('admin.brand.index', compact('brands'));
 
     }
-
     public function storeBrand(Request $request)
     {
         $validated = $request->validate([
@@ -29,24 +29,26 @@ class BrandController extends Controller
         ]);
 
         $brand_image = $request->file('brand_image');
-        $name_gen = hexdec(uniqid());
+
+       /* $name_gen = hexdec(uniqid());
         $img_ext = strtolower($brand_image->getClientOriginalExtension());
         $img_name = $name_gen . '.' . $img_ext;
         $up_location = 'image/brand/';
         $last_img = $up_location . $img_name;
-        $brand_image->move($up_location, $img_name);
+        $brand_image->move($up_location, $img_name);*/
 
+        $name_gen = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
+        Image::make($brand_image)->resize(300,200)->save('image/brand/'.$name_gen);
+        $last_img = 'image/brand/'.$name_gen;
 
         Brand::insert([
             'brand_name' => $request->brand_name,
             'brand_image' => $last_img,
             'created_at' => Carbon::now()
         ]);
-
         return redirect()->back()->with('success', 'Brand inserted Successful');
 
     }
-
     public function editBrand($id)
     {
         $brands = Brand::find($id);
