@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\MultiPicController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -40,7 +41,9 @@ Route::get('/brand/edit/{id}',[BrandController::class,'editBrand'])->name('brand
 Route::put('/brand/update/{id}',[BrandController::class,'updateBrand'])->name('brand.update');
 Route::get('/brand/delete/{id}',[BrandController::class,'delete'])->name('brand.delete');
 
-
+///for MultiPic Route
+Route::get('/multi/image',[MultiPicController::class,'multipic'])->name('multi.image');
+Route::post('/multi/add',[MultiPicController::class,'storeImg'])->name('store.image');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     /* ORM Eloquent data read */
