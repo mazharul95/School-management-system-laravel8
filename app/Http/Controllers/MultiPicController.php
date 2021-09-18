@@ -6,9 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Multipic;
 use Image;
+use Auth;
 
 class MultiPicController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function multipic(){
         $image = Multipic::all();
         return view('admin.multipic.index',compact('image'));
