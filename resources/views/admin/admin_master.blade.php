@@ -7,7 +7,7 @@
 
     <title>Easy- Admin Dashboard</title>
 
-    {{asset('backend/')}}
+
     <!-- GOOGLE FONTS -->
     <link href=" {{asset('backend/https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500')}}" rel="stylesheet"/>
     <link href=" {{asset('backend/https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css')}}" rel="stylesheet" />
