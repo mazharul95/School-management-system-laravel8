@@ -51,8 +51,8 @@ Route::post('/multi/add',[MultiPicController::class,'storeImg'])->name('store.im
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     /* ORM Eloquent data read */
-    $users = User::all();
-    return view('dashboard',compact('users'));
+    //$users = User::all();
+    return view('admin.index');
 })->name('dashboard');
 
 
