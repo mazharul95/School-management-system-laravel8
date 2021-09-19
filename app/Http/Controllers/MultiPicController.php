@@ -41,5 +41,8 @@ class MultiPicController extends Controller
         return redirect()->back()->with('success', 'Brand inserted Successful');
 
     }
-
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('sucess','User Logout');
+    }
 }
