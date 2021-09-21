@@ -1,7 +1,5 @@
 @extends('admin.admin_master')
-
 @section('admin')
-
     <!-- Top Statistics -->
     <div class="row">
         <div class="col-xl-3 col-sm-6">
@@ -49,7 +47,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xl-8 col-md-12">
             <!-- Sales Graph -->
@@ -107,7 +104,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xl-4 col-lg-6 col-12">
 
@@ -740,5 +736,4 @@
             </div>
         </div>
     </div>
-
 @endsection

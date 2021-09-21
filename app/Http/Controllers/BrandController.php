@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Routing\Controller;
 use Image;
 use Auth;
+
 class BrandController extends Controller
 {
     public function __construct(){
