@@ -38,15 +38,28 @@
                         data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{ route('home.slider') }}">
                                     <span class="nav-text">Slider</span>
                                 </a>
                             </li>
                             <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{ route('home.about') }}">
                                     <span class="nav-text">Home About</span>
                                 </a>
                             </li>
+
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{route('blog-category.index')}}">
+                                    <span class="nav-text">Blog Category</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a class="sidenav-item-link" href="#">
+                                    <span class="nav-text">Blog</span>
+                                </a>
+                            </li>
+
                             <li class="active">
                                 <a class="sidenav-item-link" href="index.html">
                                     <span class="nav-text">Home Protfolio</span>

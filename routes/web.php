@@ -2,9 +2,11 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\MultiPicController;
-use Illuminate\Support\Facades\Route;
-use App\Models\Brand;
+
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -38,6 +40,29 @@ Route::get('/brand/delete/{id}',[BrandController::class,'delete'])->name('brand.
 ///for MultiPic Route
 Route::get('/multi/image',[MultiPicController::class,'multipic'])->name('multi.image');
 Route::post('/multi/add',[MultiPicController::class,'storeImg'])->name('store.image');
+
+// admin all route
+Route::get('/home/slider', [HomeController::class,'homeSlider'])->name('home.slider');
+Route::get('/add/slider', [HomeController::class,'addSlider'])->name('add.slider');
+Route::post('/store/slider', [HomeController::class,'storeSlider'])->name('store.slider');
+Route::post('/edit/slider', [HomeController::class,'editSlider'])->name('edit.slider');
+
+
+//home about all route
+Route::get('/home/about', [AboutController::class,'homeAbout'])->name('home.about');
+Route::get('/add/about', [AboutController::class,'addAbout'])->name('add.about');
+
+//BlogCategory
+
+Route::resource('blog-category',BlogCategoryController::class);
+
+
+
+
+
+
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     /* ORM Eloquent data read */
